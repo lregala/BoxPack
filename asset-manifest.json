@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/BoxPack/static/css/main.8ec62948.css",
+    "main.js": "/BoxPack/static/js/main.a71a04b4.js",
+    "index.html": "/BoxPack/index.html",
+    "main.8ec62948.css.map": "/BoxPack/static/css/main.8ec62948.css.map",
+    "main.a71a04b4.js.map": "/BoxPack/static/js/main.a71a04b4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.8ec62948.css",
+    "static/js/main.a71a04b4.js"
+  ]
+}

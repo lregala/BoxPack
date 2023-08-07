@@ -1,0 +1,21 @@
+.home{
+    padding-left: 1%;
+    position: relative;
+}
+
+.controls{
+   margin-left: 0.8%;
+   margin-top: 1%;
+    
+}
+
+.controlbtn{
+    padding: 0.5% 3%;
+
+}
+
+
+.pending{
+    padding: 1% 3%;
+    background-color: #666;
+}

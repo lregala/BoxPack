@@ -1,0 +1,13 @@
+.result{
+    padding: 4%;
+}
+
+.resultBody{
+    background-color: #111;
+    
+    border-radius: 5px;
+    margin-top: 2%;
+    padding: 2%;
+    max-height: 60vh;
+    overflow-y: auto;
+}

@@ -1,0 +1,42 @@
+.binform {
+    color: #e4e4e4;
+    width: 100%
+}
+.binform h3{
+    margin: 0;
+}
+
+
+.formbody{
+    margin-top: 1%;
+    margin-bottom: 2%;
+}
+
+
+.binform .formcontainer{
+    border: 1px solid #444;
+    padding: 2%;
+   
+    border-radius: 5px;
+    margin-top: 1%;
+    margin-left: 3%;
+}
+
+
+
+.formsection{
+    width: 100%;
+    margin-bottom: 2%;
+    padding: 1%;
+
+}
+
+.shorty{
+    width: 60%;
+    background-color: #111;
+}
+.tall{
+    width: 62%;
+}
+
+

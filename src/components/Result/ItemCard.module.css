@@ -1,0 +1,7 @@
+.itemcard{
+    padding: 2%;
+    margin: 0.5%;
+    background-color: #ff4257;
+    min-width: 80px;
+    border-radius: 5px;
+}

@@ -1,0 +1,23 @@
+.modal{
+    min-width: 700px;
+  }
+  
+  .modal-header{
+    
+    align-items: center;
+    padding-left: 3%;
+    padding-top: 1%;
+  }
+  
+  .modal-header h3{
+    align-items: flex-start;
+    font-size: 1.7em;
+    font-weight: 300;
+    
+  }
+  
+  .inline-fields{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr
+  
+  }

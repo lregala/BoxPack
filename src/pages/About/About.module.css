@@ -1,0 +1,19 @@
+.about{
+    padding: 3%;
+    padding-top: 0;
+    min-width: 25vw;
+}
+
+.about a{
+    cursor: pointer;
+    font-weight: 600;
+    color: #ff4257
+}   
+
+.about a:hover{
+    color: #fff
+}
+
+.aboutBody{
+    padding-left: 3%;
+}

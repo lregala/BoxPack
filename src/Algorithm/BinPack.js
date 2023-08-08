@@ -25,7 +25,6 @@ const binpack3D = async (bins, items)=>{
 
     // fill unpacked:
     unpacked = [...sortedItems]
-    console.log("unpacked: ",unpacked)
 
 
     // packing algorithm
@@ -43,6 +42,23 @@ function checkFit(space, box){
     } else {
         return false
     }
+}
+
+function countMatchingDims(space,box){
+    let countMatch = 0
+
+    if (space.width === box?.width){
+        countMatch+=1
+    }
+
+    if (space.depth === box?.depth){
+        countMatch+=1
+    }
+
+    if (space.height === box?.height){
+        countMatch+=1
+    }
+    return countMatch
 }
 
 function calculateLevelHeight(container){
@@ -73,9 +89,10 @@ function packBins(unpacked, packed, binsArray){
 
     let currentIter = 0;
 
+    console.log("unpacked: ",[...unpacked])
+
     packContainer(binsArray[currentBinIndex])
     console.log("unfit: ",unfit," nextbox: ", flagNextBox)
-
     
     // Move to next size box
     if (unfit){
@@ -84,8 +101,7 @@ function packBins(unpacked, packed, binsArray){
 
         if (currentBinIndex<binsArray.length){
             packContainer(binsArray[currentBinIndex])
-
-
+            
         } else {
             console.log("Cannot finish packing")
         }
@@ -96,21 +112,19 @@ function packBins(unpacked, packed, binsArray){
     if (flagNextBox){
         // reset everything for next rounds
         
-        
         while (!packStatus){
             currentIter+=1
             currentBinIndex = 0
+            console.log(currentBinIndex,[...binsArray])
             containersArray = []
             packContainer(binsArray[currentBinIndex])
 
             if (unfit){
                 currentBinIndex+=1
                 containersArray = []
-        
+                
                 if (currentBinIndex<binsArray.length){
                     packContainer(binsArray[currentBinIndex])
-        
-        
                 } else {
                     console.log("Cannot finish packing")
                 }
@@ -121,11 +135,8 @@ function packBins(unpacked, packed, binsArray){
                 console.log("unable to find packing solution")
                 break
             }
-
-
         }        
     }
-
    
     function packContainer(container){
 
@@ -139,19 +150,15 @@ function packBins(unpacked, packed, binsArray){
         }
         
         // check if first box fits into box
-       
         if (checkFit(containerDims,unpacked[0])){
 
             fillSpace(containerDims)
-           
             containersArray.push(levelArray)
             levelArray = []
-         
 
             // update container (need to calculate properly)
             let levelHeight = calculateLevelHeight(containersArray)
             
-           
             containerDims = {...containerDims, height: binsArray[0].height - levelHeight}
 
             packContainer(containerDims)
@@ -162,31 +169,24 @@ function packBins(unpacked, packed, binsArray){
             if (unpacked.length>0){
                 console.log("Cannot fit remaining boxes in container")
               
-            
-
-                packedResult.contents = containersArray
+                packedResult.contents = containersArray.reverse()
                 packed.push(packedResult)
-
 
                 if (packedResult.contents.length===0){
                     unfit = true
-
                 } else {
                     // pack another box
                     flagNextBox = true
-
                 }
 
-                
             } else {
                 packStatus = true
                 flagNextBox = false
                 
-                packedResult.contents = containersArray
+                packedResult.contents = containersArray.reverse()
                 packed.push(packedResult)
                 containersArray=[]
                 console.log("Finished Packing")
-
             }
             
             return
@@ -208,25 +208,37 @@ function packBins(unpacked, packed, binsArray){
                     orientations = getOrientations(unpacked[m]['width'],unpacked[m]['depth'],unpacked[m]['height'])
                     
                     let fittingOrientationIndex = null
+                    let matchingSides = null
 
                     for (let n = 0; n < orientations.length; n++){
                         let tempBox = {width: orientations[n][0], depth: orientations[n][1], height: orientations[n][2]}
+                        
 
                         if (checkFit(space,tempBox)){
-          
+                            console.log("box ", tempBox, "fits in ", space)
+
+                            let countMatch = countMatchingDims(space,tempBox)
+
+                            // if (countMatch > matchingSides){
+                            //     matchingSides = countMatch
+                            //     fittingOrientationIndex = n
+                            // }
+
                             fittingOrientationIndex = n
                             break
-                        } else {
-                            
-                        }
+                        } 
                     }
                     
                     let tempBoxVol = calcVolume(unpacked[m])
 
                     // Find fitting box with biggest volume
                     if (fittingOrientationIndex !== null){
-                        if (fittingBoxVol !== null || tempBoxVol > fittingBoxVol){
+                        console.log("fittingBoxVol:",fittingBoxVol, "tempBoxVol:", tempBoxVol)
+                        if (tempBoxVol > fittingBoxVol){
+                           
+                            console.log("larger box found")
                             fittingBoxIndex = m
+                            fittingBoxVol = tempBoxVol
                             unpacked[fittingBoxIndex] = {width: orientations[fittingOrientationIndex][0], 
                                                     depth: orientations[fittingOrientationIndex][1], 
                                                     height: orientations[fittingOrientationIndex][2]}
@@ -239,6 +251,7 @@ function packBins(unpacked, packed, binsArray){
                 // pack box into level
                 let tempBox = unpacked[fittingBoxIndex]
 
+                console.log("item packed: ", tempBox, "in space: ", space)
                 moveElement(fittingBoxIndex,unpacked,levelArray)
 
                 // calculate remaining spaces
@@ -261,6 +274,8 @@ function packBins(unpacked, packed, binsArray){
                 }
 
                 if (newSpaces.length > 0){
+                    console.log("New Spaces: ", newSpaces)
+                    console.log("Boxes remaining: ", [...unpacked])
                     for (let k = 0; k < newSpaces.length; k++){
                         fillSpace(newSpaces[k])
                     }

@@ -18,7 +18,8 @@ const Box = ({container, index}) => {
                 <div>{`${container.containerDims.width} x ${container.containerDims.depth} x ${container.containerDims.height}`}</div>
             </Stack>
         </div>
-        <div>
+        
+        <div style={{borderLeft: '1px solid #fff', borderRight: '1px solid #fff', borderBottom: '1px solid #fff', marginBottom: '1%', borderRadius: '0 0 5px 5px'}}>
             {   
                 contents.map((levels, index)=>{
                     return (
@@ -29,6 +30,7 @@ const Box = ({container, index}) => {
                 })
             }
         </div>
+        
     </div>
     
   )

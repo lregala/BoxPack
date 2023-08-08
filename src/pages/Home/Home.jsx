@@ -131,6 +131,8 @@ const Home = () => {
             result = result.filter(item => item.contents.length > 0)
             result = calculateWastedSpace(result)
 
+         
+
             console.log("End Result: ", result)
 
 

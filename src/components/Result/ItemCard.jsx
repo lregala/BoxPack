@@ -4,11 +4,12 @@ import React from 'react'
 import styles from './ItemCard.module.css'
 
 const ItemCard = ({cardData}) => {
+  const contentString = `${cardData.width} x ${cardData.depth} x ${cardData.height}`
   return (
     <div className={styles.itemcard}>
         
         <div>
-                {cardData.width} x {cardData.depth} x {cardData.height}
+              {contentString}
         </div>
     </div>
   )

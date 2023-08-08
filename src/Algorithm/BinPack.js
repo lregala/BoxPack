@@ -115,7 +115,7 @@ function packBins(unpacked, packed, binsArray){
         while (!packStatus){
             currentIter+=1
             currentBinIndex = 0
-            console.log(currentBinIndex,[...binsArray])
+           
             containersArray = []
             packContainer(binsArray[currentBinIndex])
 
@@ -215,14 +215,7 @@ function packBins(unpacked, packed, binsArray){
                         
 
                         if (checkFit(space,tempBox)){
-                            console.log("box ", tempBox, "fits in ", space)
-
-                            let countMatch = countMatchingDims(space,tempBox)
-
-                            // if (countMatch > matchingSides){
-                            //     matchingSides = countMatch
-                            //     fittingOrientationIndex = n
-                            // }
+                            // count matching sides can be implemented here
 
                             fittingOrientationIndex = n
                             break
@@ -233,10 +226,10 @@ function packBins(unpacked, packed, binsArray){
 
                     // Find fitting box with biggest volume
                     if (fittingOrientationIndex !== null){
-                        console.log("fittingBoxVol:",fittingBoxVol, "tempBoxVol:", tempBoxVol)
+                        
                         if (tempBoxVol > fittingBoxVol){
                            
-                            console.log("larger box found")
+                           
                             fittingBoxIndex = m
                             fittingBoxVol = tempBoxVol
                             unpacked[fittingBoxIndex] = {width: orientations[fittingOrientationIndex][0], 

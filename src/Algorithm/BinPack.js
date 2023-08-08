@@ -169,7 +169,7 @@ function packBins(unpacked, packed, binsArray){
             if (unpacked.length>0){
                 console.log("Cannot fit remaining boxes in container")
               
-                packedResult.contents = containersArray.reverse()
+                packedResult.contents = containersArray
                 packed.push(packedResult)
 
                 if (packedResult.contents.length===0){
@@ -183,7 +183,7 @@ function packBins(unpacked, packed, binsArray){
                 packStatus = true
                 flagNextBox = false
                 
-                packedResult.contents = containersArray.reverse()
+                packedResult.contents = containersArray
                 packed.push(packedResult)
                 containersArray=[]
                 console.log("Finished Packing")

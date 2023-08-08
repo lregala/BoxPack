@@ -2,7 +2,7 @@ const buttonStyles = {
     light: {
         backgroundColor: 'transparent',
         "&:hover":  {
-            backgroundColor: "#6aa7bb"
+            backgroundColor: "#ff4257"
         }
         
 
@@ -10,7 +10,7 @@ const buttonStyles = {
     dark: {
         backgroundColor: 'transparent',
         "&:hover":  {
-            backgroundColor: "#6aa7bb"
+            backgroundColor: "#ff4257"
         }
     }                   
 }

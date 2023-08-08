@@ -12,10 +12,10 @@ const About = () => {
   return (
     <div className={styles.about}>
       <div>
-          <div>
-            <h4>
-              Usage
-            </h4>
+          <div style={{ textDecoration: 'underline'}}>
+            <h3>
+              Usage:
+            </h3>
           </div>
           <div className={styles.aboutBody}>
             <Stack direction={"column"}>
@@ -40,14 +40,14 @@ const About = () => {
       </div>
 
       <div>
-          <div>
-            <h4>
-            Technical Details
-            </h4>
+          <div style={{ textDecoration: 'underline'}}>
+            <h3>
+            Technical Details:
+            </h3>
           </div>
           <div className={styles.aboutBody}>
-            <p>BoxPack uses the Largest-Area-Fit-First (LAFF) Algorithm. 
-            <br/>To learn more about the algorithm, please refer to this <a target="_blank" href='https://www.parkbeachsystems.com/images/usps/An_Efficient_Algorithm_for_3D_Rectangular_Box_Packing.pdf'>paper.</a></p>
+            <p>BoxPack uses the Largest-Area-Fit-First (LAFF) 3D Bin Packing Algorithm. 
+            <br/>To learn more about the algorithm, please refer to this <a rel="noreferrer" target="_blank" href='https://www.parkbeachsystems.com/images/usps/An_Efficient_Algorithm_for_3D_Rectangular_Box_Packing.pdf'>paper.</a></p>
           </div>
       </div>
 

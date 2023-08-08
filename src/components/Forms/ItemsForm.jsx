@@ -64,7 +64,7 @@ const ItemsForm = () => {
                             </Stack>
                             <Stack direction={"row"} alignItems={"center"} gap={1}>
                                 
-                                <IconButton sx={{"&:hover": {backgroundColor: "#6aa7bb"}}}>
+                                <IconButton sx={{"&:hover": {backgroundColor: "#666"}}}>
                                     <AddIcon sx={{color: "#fff"}}/>
                                 </IconButton>
                             </Stack>

@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/BoxPack/static/css/main.200a73df.css",
-    "main.js": "/BoxPack/static/js/main.44762340.js",
+    "main.js": "/BoxPack/static/js/main.2c80f6fd.js",
     "index.html": "/BoxPack/index.html",
     "main.200a73df.css.map": "/BoxPack/static/css/main.200a73df.css.map",
-    "main.44762340.js.map": "/BoxPack/static/js/main.44762340.js.map"
+    "main.2c80f6fd.js.map": "/BoxPack/static/js/main.2c80f6fd.js.map"
   },
   "entrypoints": [
     "static/css/main.200a73df.css",
-    "static/js/main.44762340.js"
+    "static/js/main.2c80f6fd.js"
   ]
 }

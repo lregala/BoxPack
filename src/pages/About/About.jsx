@@ -21,7 +21,7 @@ const About = () => {
             <Stack direction={"column"}>
               <div>1) Enter available container dimensions.</div>
               <div>2) Enter dimensions of boxes to be packed.</div>
-              <div>3) Once containers and boxes are defined, the user can run the script.</div>
+              <div>3) Once containers and boxes are defined, the result is automatically calculated.</div>
               <div><Stack direction={"row"} gap={0.5}><div>4) Clear fields using </div><DeleteIcon/></Stack></div>
               <div><br/></div>
               <div>

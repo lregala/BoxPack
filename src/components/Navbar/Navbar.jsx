@@ -25,7 +25,7 @@ const Navbar = ({currentPage, onPageChange}) => {
         <Stack direction={"row"} alignItems={"center"} justifyContent={"space-between"}>
             <div className={styles.navbarlogo} onClick={()=>handleClick("Home")}>
                 <Stack direction={"row"} alignItems={"center"} gap={0.2}>
-                        <WidgetsIcon sx={{color: "#FF8C42"}} />
+                        <WidgetsIcon sx={{color: "#ff4257"}} />
                         <div>
                             <h1>BoxPack</h1>
                         </div>

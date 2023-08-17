@@ -44,7 +44,7 @@ const Home = () => {
 
     const [pending, setPending] = useState(false)
     const [buttonStatus, setButtonStatus] = useState(false)
-
+   
     const [packing, setPacking] = useState(null)
 
     const checkDuplicates = (inputData, boxArray)=>{
@@ -75,7 +75,11 @@ const Home = () => {
         let binsLength = newBins.length
 
         if (binsLength<maxBins && !checkDuplicates(binData, newBins)){
-            newBins.push(binData)
+            
+            for (let k=0;k<binData.length;k++){
+                newBins.push(binData[k])
+            }
+            
             setBins(newBins)
         }
     }
@@ -87,7 +91,10 @@ const Home = () => {
         let itemsLength = newItems.length
 
         if (itemsLength<maxItems){
-            newItems.push(itemData)
+
+            for (let k=0;k<itemData.length;k++){
+                newItems.push(itemData[k])
+            }
             setItems(newItems)
         }
     }
@@ -185,10 +192,16 @@ const Home = () => {
         setPacking(null)
     },[bins,items])
 
+    useEffect(()=>{
+        if (packing===null && bins.length>0 && items.length>0){
+            handleRun()
+        }
+    },[packing, bins, items])
+
   return (
     <div className={styles.home}>
             <Grid container spacing={2}>
-                <Grid item xs={3}>
+                <Grid item xs={12} sm={6} lg={4}>
                 
                     <div className='section-header'>
                         <Stack direction={"row"} gap={1} alignItems={"center"} justifyContent={"space-between"}>
@@ -214,7 +227,7 @@ const Home = () => {
 
                         </Stack>
                     </div>
-                    <BinForm onAdd={addBin} isDisabled={binsDisabled}/>
+                    <BinForm onAdd={addBin} isDisabled={binsDisabled} totalQty={bins.length} maxQty={maxBins} mode='inf'/>
                     <Rack title={`Available Bin Dimensions (${bins.length})`}>
                         {bins.map((bin, index)=>{
                             return(
@@ -227,7 +240,7 @@ const Home = () => {
                     </Rack>
                 </Grid>
 
-                <Grid item xs={3}>
+                <Grid item xs={12} sm={6} lg={4}>
                     <div className='section-header'>
                         <Stack direction={"row"} gap={1} alignItems={"center"}  justifyContent={"space-between"}>
                             <Stack direction={"row"} gap={1} alignItems={"center"}>
@@ -248,7 +261,7 @@ const Home = () => {
                             
                         </Stack>
                     </div>
-                    <BinForm onAdd={addItem} isDisabled={itemsDisabled}/>
+                    <BinForm onAdd={addItem} isDisabled={itemsDisabled} totalQty={items.length} maxQty={maxItems}/>
                     <Rack title={`Items to Pack (${items.length})`}>
                         {items.map((item, index)=>{
                             return(
@@ -262,11 +275,11 @@ const Home = () => {
                 
                 </Grid>
 
-                <Grid item xs={6}>
+                <Grid item xs={12} sm={12} lg={4}>
                         {packing && <Result resultData={packing}/>}
                 </Grid>
 
-                <Grid item xs={12}>
+                {/* <Grid item xs={12}>
                     <div className={styles.controls}>
                         <Stack direction={"row"}>
 
@@ -287,7 +300,7 @@ const Home = () => {
                         </Stack>
                     </div>
 
-                </Grid>
+                </Grid> */}
             </Grid>
            
 
